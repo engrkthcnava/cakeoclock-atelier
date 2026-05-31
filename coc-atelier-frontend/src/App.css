@@ -1,0 +1,765 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Oswald:wght@700&display=swap');
+
+/* ==========================================================================
+   1. GLOBAL RESET & BASIC STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'League Spartan', sans-serif;
+  color: #222222;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   2. NAVBAR STYLING
+   ========================================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #FCCA17; 
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(252, 202, 23, 0.12);
+}
+
+.site-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+  cursor: pointer; 
+}
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-right-cluster {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.nav-links li {
+  font-size: 13px;
+  font-weight: 700; 
+  color: #1e1e1e; 
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-links li:hover {
+  color: #F628AD; 
+}
+
+.nav-order-cta-btn {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-order-cta-btn:hover {
+  background-color: #F628AD;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(246, 40, 173, 0.35);
+}
+
+/* ==========================================================================
+   3. HERO SECTION STYLING (Responsive Base Layout)
+   ========================================================================== */
+.hero-section {
+  width: 100%;
+  height: 65vh; 
+  background-size: cover;
+  background-position: center;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative; 
+  transition: background-image 0.5s ease-in-out; 
+  box-sizing: border-box;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(30, 20, 10, 0.35), rgba(30, 20, 10, 0.55));
+}
+
+.hero-content {
+  position: relative;
+  color: #ffffff;
+  z-index: 10;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 1200px; /* Restrains content from blowing past margins */
+  box-sizing: border-box;
+}
+
+.hero-content h1 {
+  font-family: 'Oswald', sans-serif;
+  /* FIX: Fluid clamping. It dynamically scales text relative to screen width,
+     clamping it safely between a minimum of 36px and a maximum of 75px */
+  font-size: clamp(36px, 7vw, 75px);
+  font-weight: 700;
+  line-height: 1.1; /* Relaxed slightly from 0.95 to allow readable text wrapping on mobile */
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h2 {
+  /* FIX: Fluid clamping for subtitles between 12px and 20px */
+  font-size: clamp(12px, 2.5vw, 20px);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FCCA17; 
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  /* FIX: Fluid tracking so letters don't smash together or break constraints */
+  letter-spacing: clamp(3px, 1vw, 8px);
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 24px;
+  padding: 20px 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  border-radius: 50%; 
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.arrow-btn:hover { 
+  background: #F628AD; 
+  border-color: #F628AD;
+  transform: translateY(-50%) scale(1.05);
+}
+.left-arrow { left: 0; }
+.right-arrow { right: 0; }
+
+/* ==========================================================================
+   4. PRODUCT TRAY (Infinite Carousel)
+   ========================================================================== */
+.product-section {
+  text-align: center;
+  padding: 80px 0;
+  background-color: #FFFDF9; 
+  overflow: hidden; 
+  position: relative;
+}
+
+.header-area h3 {
+  color: #888888;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.featured-title {
+  font-family: 'Oswald', sans-serif;
+  color: #F628AD; 
+  font-size: 4rem;
+  margin: 5px 0 65px 0; 
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.slider-area {
+  position: relative;
+  height: 280px; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.static-plate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  z-index: 5;
+  width: 525px;
+  height: auto;
+  pointer-events: none;
+}
+
+.static-plate img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-3d {
+  position: absolute; 
+  top: 50%;
+  left: 50%; 
+  width: 160px;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+  margin-left: -80px; 
+  margin-top: -110px;  
+  cursor: pointer;
+}
+
+.product-card-3d img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.12));
+  transition: filter 0.3s ease;
+}
+
+.product-card-3d:hover img {
+  filter: drop-shadow(0 20px 25px rgba(246, 40, 173, 0.25)); 
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 3.5rem;
+  color: #dddddd; 
+  cursor: pointer;
+  z-index: 20;
+  padding: 20px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: #F628AD; 
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-btn.left { left: 6%; }
+.nav-btn.right { right: 6%; }
+
+/* ==========================================================================
+   5. FLOATING INTERACTIVE PRE-ORDER DRAWER WIDGET
+   ========================================================================== */
+.floating-order-trigger {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: none;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  padding: 16px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-order-trigger:hover {
+  background-color: #F628AD;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(246, 40, 173, 0.35);
+}
+
+.hidden-trigger {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #FCCA17;
+  border-radius: 50%;
+  position: relative;
+}
+
+.floating-cart-panel {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 360px;
+  height: 540px;
+  background-color: #ffffff;
+  z-index: 1000;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panel-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.floating-cart-panel.panel-maximized {
+  width: min(85vw, 1100px);
+  height: min(75vh, 85vh);
+  bottom: 20px;
+  right: 20px;
+  left: auto;
+}
+
+.floating-cart-panel.panel-minimized {
+  width: 360px;
+  height: auto;
+  bottom: 30px;
+  right: 30px;
+  max-height: none;
+  overflow: hidden;
+}
+
+.floating-cart-panel.panel-minimized .panel-form-body {
+  display: none;
+}
+
+.panel-header {
+  background-color: #FCCA17;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  margin: 0;
+}
+
+.panel-header p {
+  font-size: 0.75rem;
+  color: #555555;
+  margin: 2px 0 0 0;
+  font-weight: 700;
+}
+
+.close-panel-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #1e1e1e;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close-panel-btn:hover {
+  color: #F628AD;
+}
+
+.panel-header-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.panel-control-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #1e1e1e;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.panel-control-btn:hover {
+  color: #F628AD;
+  transform: translateY(-1px);
+}
+
+.panel-form-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  background: #FFFDF9;
+}
+
+.panel-form-body textarea {
+  min-height: 140px;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.panel-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.panel-inputs input {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.panel-grid-card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s;
+}
+
+.panel-card-clickable {
+  cursor: pointer;
+}
+
+.panel-img-wrap {
+  width: 100%;
+  height: 90px;
+  background-color: #FAFAFA;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.panel-grid-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.panel-card-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1e1e1e;
+}
+
+.p-price {
+  color: #F628AD;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.card-selected {
+  border-color: #F628AD;
+  background: #FFFDFB;
+}
+
+.panel-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 4px;
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.panel-counter button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 24px;
+  height: 24px;
+}
+
+.panel-counter span {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.panel-form-body textarea {
+  width: 100%;
+  height: 70px;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.panel-footer-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(252, 202, 23, 0.4);
+  padding: 15px;
+  border-radius: 14px;
+}
+
+.panel-total span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #666666;
+  font-weight: 700;
+  display: block;
+}
+
+.panel-total strong {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  color: #F628AD;
+}
+
+.panel-submit-btn {
+  background: #1e1e1e;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.panel-submit-btn:hover {
+  background: #F628AD;
+}
+
+.panel-status-txt {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   DESKTOP ROUTINE BASELINE (Hidden Elements)
+   ========================================================================== */
+.mobile-hamburger-trigger {
+  display: none; /* Crucial: Keeps it completely invisible on desktop screens */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2500;
+}
+
+.burger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #5c3a21; /* Your brand brown profile accent */
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   6. UPDATED MOBILE OVERRIDES (768px and below)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Prevent iOS/Android from inflating fonts automatically when flipping to landscape */
+  html, body {
+    -webkit-text-size-adjust: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Drops unwanted horizontal scrolling artifacts */
+  }
+
+  .navbar {
+    padding: 10px 20px;
+    height: 60px; /* Reduced from 70px to balance your mobile logo proportions */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Force the site logo image to scale proportionally to your new tighter navbar height */
+  .site-logo {
+    height: 32px !important;
+    width: auto;
+  }
+
+  /* Reveal the hamburger trigger ONLY on smaller screens */
+  .mobile-hamburger-trigger {
+    display: flex !important;
+  }
+
+  /* Transform the desktop right cluster into a mobile floating dropdown layout */
+  .nav-right-cluster {
+    position: absolute;
+    top: 60px; /* Adjusted to sit right at the baseline of the tighter 60px navbar */
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    flex-direction: column;
+    padding: 30px 0;
+    gap: 24px;
+    align-items: center;
+
+    /* Hidden layout baseline: Shifts upward out of sight */
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 1500;
+  }
+
+  /* Slide down smoothly when user clicks the active state trigger */
+  .nav-right-cluster.mobile-menu-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Stack link items vertically */
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links li {
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 1rem; /* Trimmed slightly from 1.1rem to look cleaner on device menus */
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: block;
+    padding: 8px 0;
+  }
+
+  .nav-order-cta-btn {
+    width: 80%; /* Expand button width for easy mobile tap boundary zones */
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  /* --- INTERACTIVE: ANIMATE HAMBURGER TO AN "X" WHEN OPEN --- */
+  .mobile-hamburger-trigger.burger-active .burger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .mobile-hamburger-trigger.burger-active .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-hamburger-trigger.burger-active .burger-line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
