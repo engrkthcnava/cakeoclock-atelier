@@ -259,3 +259,38 @@
     transform: translateY(-6px);
   }
 }
+
+/* FAQ Suggestion Deck Layout */
+.faq-container {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #fefae0;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Hide scrollbar lines but preserve sliding behavior */
+.faq-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Clickable Rounded Pill Design */
+.faq-pill {
+  background-color: #ffffff;
+  color: #c69363;
+  border: 1px solid #e9d8a6;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.faq-pill:hover {
+  background-color: #e9d8a6;
+  color: #2b2d42;
+  transform: translateY(-1px);
+}
