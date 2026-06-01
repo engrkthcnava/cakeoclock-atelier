@@ -21,9 +21,9 @@ export default async function handler(req, res) {
   try {
     // 2. Draft the email layout receipt going to your CUSTOMER
     const customerMailOptions = {
-      from: `"Cake o' Clock Atelier" <${process.env.EMAIL_USER}>`,
+      from: `"Bean 'n Bite" <${process.env.EMAIL_USER}>`,
       to: customerEmail,
-      subject: `Your Cake o' Clock Atelier Pastry Reservation is Confirmed! 🥮`,
+      subject: `Your Bean 'n Bite Pastry Reservation is Confirmed! 🥮`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
           <h2 style="color: #8B5A2B;">Hi ${customerName},</h2>
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
     // 3. Draft the layout alert going to YOU (The Owner)
     const ownerMailOptions = {
-      from: `"Cake o' Clock Atelier System" <${process.env.EMAIL_USER}>`,
+      from: `"Bean 'n Bite System" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER, // Sends directly back to your inbox
       subject: `🚨 New Pastry Reservation Received! - ${customerName}`,
       html: `
@@ -67,3 +67,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Failed to dispatch notification logs' });
   }
 }
+

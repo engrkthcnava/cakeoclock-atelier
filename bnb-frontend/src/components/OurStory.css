@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Bean 'n Bite TEASER ROW COMPONENT STYLES
+   ========================================================================== */
+
+.story-section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Forces structural elements side-by-side cleanly */
+.story-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Text gets slightly more room than the photo window */
+  align-items: center;
+  gap: 80px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* LEFT COLUMN TYPOGRAPHY MAP */
+.story-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.story-meta-tag {
+  color: #F628AD; /* Signature Bean 'n Bite Pink */
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.story-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  margin: 0 0 25px 0;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.story-text p {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #555555;
+  margin: 0 0 35px 0;
+  font-weight: 400;
+}
+
+/* Premium Brand Yellow Action Badge Button */
+.story-btn {
+  background-color: #FCCA17; /* Branded Yellow Accent */
+  color: #1e1e1e;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 30px; /* High-end pill form */
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(252, 202, 23, 0.2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(252, 202, 23, 0.35);
+  background-color: #f7c30a;
+}
+
+/* RIGHT COLUMN: THE COMPACT VISUAL WINDOW FRAME */
+.story-visual-frame {
+  position: relative;
+  width: 100%;
+  height: 450px; /* Fixed height constraints keep it professional */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.story-display-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops cleanly inside the frame container */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-visual-frame:hover .story-display-img {
+  transform: scale(1.03); /* Subtle premium parallax movement */
+}
+
+/* Pink Overlay Float Badge */
+.story-image-overlay-badge {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: #F628AD;
+  color: #ffffff;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(246, 40, 173, 0.3);
+}
+
+/* RESPONSIVE DESIGN: Smoothly stacks vertically on tablets/phones */
+@media (max-width: 960px) {
+  .story-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 0 24px;
+  }
+  
+  .story-title {
+    font-size: 2.6rem;
+  }
+  
+  .story-visual-frame {
+    height: 350px;
+  }
+}
+
