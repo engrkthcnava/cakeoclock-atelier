@@ -100,7 +100,7 @@ function Chatbot() {
             <div className="chat-avatar">🧁</div>
             <div>
               <h3>Pastry Assistant</h3>
-              <p>Cake o' Clock Atelier AI</p>
+              <p>Bean n' Bite AI</p>
             </div>
           </div>
 
